@@ -20,3 +20,5 @@ red() {
 main() {
     red "Look ma it's working"
 }
+
+main
