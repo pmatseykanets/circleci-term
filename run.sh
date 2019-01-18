@@ -4,7 +4,8 @@ set -e
 
 red() {
 	# check if stdout is a terminal
-	if [ -t 1 ] && [ ! -z ${TERM+x}  ]; then
+	if [ -t 1 ]; then
+        TERM="{$TERM:-dumb}"
 		# see if it supports colors
 		ncolors=$(tput colors)
 		if [ $ncolors -ge 8 ]; then
