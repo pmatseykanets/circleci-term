@@ -4,14 +4,13 @@ set -e
 
 red() {
 	# check if stdout is a terminal
-	if [ -t 1 ]; then
-        TERM="{$TERM:-dumb}"
-		# see if it supports colors
-		ncolors=$(tput colors)
-		if [ $ncolors -ge 8 ]; then
-			tput setaf 1; echo "$@"; tput sgr0
-			return
-		fi
+	if [ -t 1 ] && [ ! -z "${TERM:-}" ]; then
+        # see if it supports colors
+        ncolors=$(tput colors)
+        if [ $ncolors -ge 8 ]; then
+            tput setaf 1; echo "$@"; tput sgr0
+            return
+        fi
 	fi
 
 	# either not a terminal or doesn't support colors
