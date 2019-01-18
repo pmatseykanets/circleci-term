@@ -4,7 +4,11 @@ set -e
 
 red() {
 	# check if stdout is a terminal
-	if [ -t 1 ] && [ ! -z "${TERM:-}" ]; then
+	if [[ -t 1 ]] && ! [[ -z "${TERM:-}" ]]; then
+        
+        echo "as-is '$TERM'"
+        echo "default '${TERM:-}'"
+
         # see if it supports colors
         ncolors=$(tput colors)
         if [ $ncolors -ge 8 ]; then
