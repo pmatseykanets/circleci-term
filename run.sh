@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -env
+set -e
 
 red() {
 	# check if stdout is a terminal
